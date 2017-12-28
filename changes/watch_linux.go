@@ -12,10 +12,10 @@ import (
 )
 
 var (
-	dirCreateFlags	= inotify.IN_CREATE | inotify.IN_ISDIR
-	dirDeleteFlags	= inotify.IN_DELETE | inotify.IN_ISDIR
-	watcher			*inotify.Watcher
-	lock			sync.Mutex
+	dirCreateFlags = inotify.IN_CREATE | inotify.IN_ISDIR
+	dirDeleteFlags = inotify.IN_DELETE | inotify.IN_ISDIR
+	watcher        *inotify.Watcher
+	lock           sync.Mutex
 )
 
 func init() {
@@ -72,4 +72,3 @@ func waitForNextScan(dir string) {
 		}
 	}
 }
-

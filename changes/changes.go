@@ -1,7 +1,6 @@
 package changes
 
 import (
-
 	"fmt"
 	"os"
 	"path/filepath"
@@ -132,8 +131,12 @@ func syncUntilStable(dir string, ignore []string, ch chan Change, prev dirSnapsh
 
 		changed := notify(ch, prev, snap, dir, ignore)
 
-		if isDebugging() && changed && i > 0 {
-			fmt.Printf("syncUntilStable: multipass (%s) change: %s ... ", i, changed)
+		if isDebugging() && changed {
+			if i > 0 {
+				fmt.Printf("syncUntilStable: multipass (%s) change: %s ... ", i, changed)
+			} else {
+				fmt.Printf("syncUntilStable: first pass change: %s ... \n", changed)
+			}
 		}
 
 		prev = snap
